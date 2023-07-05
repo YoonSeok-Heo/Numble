@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.numble'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '3.1.1'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '3.1.1'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.1.1'
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.1'
+
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.1.4'
+
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
+	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '6.1.1'
+
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.1.1'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.1.1'
+
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
